@@ -308,25 +308,10 @@ The paper reports filtered link-prediction results in percentage points:
 
 Small deviations can arise from stochastic optimization and software/hardware differences. Large discrepancies should first be checked against data preprocessing, checkpoint selection, filtered evaluation, and the validation-selected fusion weight.
 
-## Reproducibility checklist
-
-- Use the exact dataset split and textual descriptions stated in the paper.
-- Keep `bert-base-uncased` fixed across compared text-based methods.
-- Select checkpoints and hyperparameters using validation data only.
-- Use filtered full-entity ranking for final evaluation.
-- Set and report the random seed.
-- Record the complete command, Git commit, package versions, GPU model, and output log.
-- For inductive evaluation, keep target query labels outside the support/evidence graph.
-- For Wikidata5M-Trans, use the verified streaming implementation rather than the compact placeholder.
 
 ## Citation
 
-The citation will be added after the paper receives verifiable public bibliographic metadata. Please do not create or circulate a fictitious journal citation for a manuscript that has not yet been published.
-
-## Acknowledgements
-
-This work was supported by the Major Project of the Science and Technology Research Program of Chongqing Municipal Education Commission (Grant No. KJZD-M202400901).
 
 ## License
 
-Add a `LICENSE` file before public release and state the selected license here. The license for this code does not override the licenses of BERT, the benchmark datasets, or other third-party resources.
+

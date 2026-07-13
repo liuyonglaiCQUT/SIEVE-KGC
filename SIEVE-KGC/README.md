@@ -74,6 +74,11 @@ HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 python evaluate.p
   --filter_known true
 ```
 
+### Acknowledgement
+Many thanks to previous works:
+- [SimKGC](https://github.com/intfloat/SimKGC)
+- [RAA-KGC](https://github.com/DuanyangYuan/RAA-KGC)
+
 ## Files
 
 - `main.py`: training entry point.

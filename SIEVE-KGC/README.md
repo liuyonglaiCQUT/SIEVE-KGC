@@ -1,24 +1,33 @@
 # SIEVE-KGC
 
-A clean implementation of **SIEVE-KGC: Structural Evidence-Enhanced Query Encoding for Knowledge Graph Completion**.
+Official implementation of **SIEVE-KGC: Structural Evidence Enhanced Query Encoding for Knowledge Graph Completion**.
 
-This release keeps only the code required to train and evaluate the main SIEVE-KGC model.
-Visualization scripts, ablation-only utilities, efficiency scripts, and external baseline wrappers are not included.
-SIEVE is always enabled inside the model; there is no command-line switch for disabling the structural evidence branch.
+SIEVE-KGC augments a text-based bi-encoder with query-conditioned structural evidence retrieved from the observed graph. It combines relation-compatible path closure and relation-conditioned neighborhood consistency, encodes the selected evidence on the query side, and preserves full-entity ranking with cached candidate representations.
 
-## Expected data format
+> **Reproducibility note.** The commands below record the settings used for the reported experiments whenever they have been verified. Paths are relative to the repository root. The large-scale Wikidata5M-Trans experiment used a separate streaming pipeline on an NVIDIA A800; see [Wikidata5M-Trans](#wikidata5m-trans) before attempting to reproduce it.
 
-Each dataset directory should contain:
+## Requirements
 
-```text
-train.json
-valid.json
-test.json
-entities.json
+The code was run on Linux with Python, PyTorch, and Hugging Face Transformers.
+
+Hardware used in the paper:
+
+- **NVIDIA GeForce RTX 4090:** WN18RR, FB15k-237, the inductive splits, and the compatibility/efficiency experiments.
+- **NVIDIA A800:** Wikidata5M-Trans, including large-scale full-entity evaluation.
+
+We recommend creating an isolated environment and installing the locked dependencies supplied with this repository:
+
+```bash
+conda create -n sieve-kgc python=3.8 -y
+conda activate sieve-kgc
+pip install -r requirements.txt
 ```
 
-Triples use JSON objects with fields such as `head_id`, `head`, `relation`, `tail_id`, and `tail`.
-Entities use JSON objects with `entity_id`, `entity`, and optionally `entity_desc`.
+Download `bert-base-uncased` in advance and place it at:
+
+```text
+./bert-base-uncased/
+```
 
 ## Train on WN18RR
 
